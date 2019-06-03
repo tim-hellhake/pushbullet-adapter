@@ -1,0 +1,81 @@
+{
+  "name": "pushbullet-adapter",
+  "display_name": "Pushbullet",
+  "version": "0.1.0",
+  "description": "Send notifications to your devices",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tim-hellhake/pushbullet-adapter.git"
+  },
+  "author": "Tim Hellhake",
+  "license": "MPL-2.0",
+  "bugs": {
+    "url": "https://github.com/tim-hellhake/pushbullet-adapter/issues"
+  },
+  "homepage": "https://github.com/tim-hellhake/pushbullet-adapter#readme",
+  "files": [
+    "LICENSE",
+    "SHA256SUMS",
+    "index.js",
+    "pushbullet-adapter.js"
+  ],
+  "moziot": {
+    "api": {
+      "min": 2,
+      "max": 2
+    },
+    "plugin": true,
+    "exec": "{nodeLoader} {path}",
+    "schema": {
+      "type": "object",
+      "required": [
+        "accessToken"
+      ],
+      "properties": {
+        "accessToken": {
+          "type": "string",
+          "title": "The access token"
+        },
+        "messages": {
+          "type": "array",
+          "title": "Predefined messages",
+          "items": {
+            "type": "object",
+            "title": "A predefined message",
+            "required": [
+              "name",
+              "title",
+              "body"
+            ],
+            "properties": {
+              "name": {
+                "type": "string",
+                "title": "The name of the action"
+              },
+              "title": {
+                "type": "string",
+                "title": "The title of the message"
+              },
+              "body": {
+                "type": "string",
+                "title": "The body of the message"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "dependencies": {
+    "pushbullet": "^2.4.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.16.0"
+  }
+}
