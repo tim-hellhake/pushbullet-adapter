@@ -3,7 +3,7 @@
   "id": "pushbullet-adapter",
   "name": "Pushbullet",
   "short_name": "Pushbullet",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Send notifications to your devices",
   "homepage_url": "https://github.com/tim-hellhake/pushbullet-adapter#readme",
   "license": "MPL-2.0",

@@ -1,7 +1,7 @@
 {
   "name": "pushbullet-adapter",
   "display_name": "Pushbullet",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Send notifications to your devices",
   "main": "index.js",
   "scripts": {
