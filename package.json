@@ -23,6 +23,7 @@
     "SHA256SUMS",
     "index.js",
     "pushbullet-adapter.js",
+    "pushbullet-notifier.js",
     "manifest.json"
   ],
   "moziot": {

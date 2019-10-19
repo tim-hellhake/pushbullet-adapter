@@ -8,5 +8,15 @@
 
 const PushbulletAdapter = require('./pushbullet-adapter');
 
-module.exports =
-    (addonManager, manifest) => new PushbulletAdapter(addonManager, manifest);
+module.exports = (addonManager, manifest) => {
+  new PushbulletAdapter(addonManager, manifest);
+
+  try {
+    const PushbulletNotifier = require('./pushbullet-notifier');
+    new PushbulletNotifier(addonManager, manifest);
+  } catch (e) {
+    if (!(e instanceof TypeError)) {
+      console.error(e);
+    }
+  }
+};
