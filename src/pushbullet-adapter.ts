@@ -6,15 +6,14 @@
 
 'use strict';
 
+import { Adapter, Device } from "gateway-addon";
+
 const PushBullet = require('pushbullet');
 
-const {
-  Adapter,
-  Device,
-} = require('gateway-addon');
+export class PushbulletDevice extends Device {
+  private callbacks: { [key: string]: (action: any) => void };
 
-class PushbulletDevice extends Device {
-  constructor(adapter, manifest, device) {
+  constructor(adapter: any, manifest: any, device: any) {
     super(adapter, device.iden);
     this['@context'] = 'https://iot.mozilla.org/schemas/';
     this.name = device.nickname;
@@ -54,12 +53,12 @@ class PushbulletDevice extends Device {
     }
   }
 
-  addCallbackAction(description, callback) {
+  addCallbackAction(description: any, callback: (action: any) => void) {
     this.addAction(description.title, description);
     this.callbacks[description.title] = callback;
   }
 
-  async performAction(action) {
+  async performAction(action: any) {
     action.start();
 
     const callback = this.callbacks[action.name];
@@ -74,14 +73,14 @@ class PushbulletDevice extends Device {
   }
 }
 
-class PushbulletAdapter extends Adapter {
-  constructor(addonManager, manifest) {
+export class PushbulletAdapter extends Adapter {
+  constructor(addonManager: any, manifest: any) {
     super(addonManager, PushbulletAdapter.name, manifest.name);
     addonManager.addAdapter(this);
     this.discover(manifest);
   }
 
-  async discover(manifest) {
+  async discover(manifest: any) {
     const pusher = new PushBullet(manifest.moziot.config.accessToken);
     const result = await pusher.devices();
 
@@ -92,5 +91,3 @@ class PushbulletAdapter extends Adapter {
     }
   }
 }
-
-module.exports = PushbulletAdapter;

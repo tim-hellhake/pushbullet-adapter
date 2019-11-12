@@ -6,28 +6,27 @@
 
 'use strict';
 
+import { Notifier, Outlet } from "gateway-addon";
+
 const PushBullet = require('pushbullet');
 
-const {
-  Notifier,
-  Outlet,
-} = require('gateway-addon');
-
 class PushbulletOutlet extends Outlet {
-  constructor(notifier, config) {
+  private pusher: any;
+
+  constructor(notifier: Notifier, config: any) {
     super(notifier, PushbulletOutlet.name);
     this.name = 'Pushbullet';
-    this.config = config;
     this.pusher = new PushBullet(config.accessToken);
   }
 
-  async notify(title, message) {
+  async notify(title: string, message: string) {
     await this.pusher.note({}, title, message);
   }
 }
 
-class PushbulletNotifier extends Notifier {
-  constructor(addonManager, manifest) {
+export class PushbulletNotifier extends Notifier {
+  outlets: any;
+  constructor(addonManager: any, manifest: any) {
     super(addonManager, PushbulletNotifier.name, manifest.name);
 
     addonManager.addNotifier(this);
@@ -40,5 +39,3 @@ class PushbulletNotifier extends Notifier {
     }
   }
 }
-
-module.exports = PushbulletNotifier;
