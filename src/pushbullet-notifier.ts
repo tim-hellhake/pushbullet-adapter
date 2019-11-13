@@ -33,7 +33,6 @@ export class PushbulletNotifier extends Notifier {
 
     if (!this.outlets[PushbulletNotifier.name]) {
       this.handleOutletAdded(
-        // eslint-disable-next-line max-len
         new PushbulletOutlet(this, manifest.moziot.config)
       );
     }
