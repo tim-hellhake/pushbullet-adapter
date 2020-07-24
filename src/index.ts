@@ -7,14 +7,9 @@
 'use strict';
 
 import { PushbulletAdapter } from './pushbullet-adapter';
+import { PushbulletNotifier } from './pushbullet-notifier';
 
 export = (addonManager: any, manifest: any) => {
   new PushbulletAdapter(addonManager, manifest);
-
-  try {
-    const { PushbulletNotifier } = require('./pushbullet-notifier');
-    new PushbulletNotifier(addonManager, manifest);
-  } catch (e) {
-    console.error(e);
-  }
+  new PushbulletNotifier(addonManager, manifest);
 }
