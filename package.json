@@ -26,53 +26,6 @@
     "lib/pushbullet-notifier.js",
     "manifest.json"
   ],
-  "moziot": {
-    "api": {
-      "min": 2,
-      "max": 2
-    },
-    "plugin": true,
-    "exec": "{nodeLoader} {path}",
-    "schema": {
-      "type": "object",
-      "required": [
-        "accessToken"
-      ],
-      "properties": {
-        "accessToken": {
-          "type": "string",
-          "title": "The access token"
-        },
-        "messages": {
-          "type": "array",
-          "title": "Predefined messages",
-          "items": {
-            "type": "object",
-            "title": "A predefined message",
-            "required": [
-              "name",
-              "title",
-              "body"
-            ],
-            "properties": {
-              "name": {
-                "type": "string",
-                "title": "The name of the action"
-              },
-              "title": {
-                "type": "string",
-                "title": "The title of the message"
-              },
-              "body": {
-                "type": "string",
-                "title": "The body of the message"
-              }
-            }
-          }
-        }
-      }
-    }
-  },
   "dependencies": {
     "pushbullet": "^2.4.0"
   },
