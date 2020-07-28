@@ -30,8 +30,8 @@
     "pushbullet": "^2.4.0"
   },
   "devDependencies": {
-    "@types/node": "^12.12.7",
+    "@types/node": "^14.0.26",
     "@types/twitter": "^1.7.0",
-    "typescript": "^3.7.2"
+    "typescript": "^3.9.7"
   }
 }
